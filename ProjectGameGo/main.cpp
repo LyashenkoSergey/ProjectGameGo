@@ -135,15 +135,18 @@ bool checkCapture(int**& array, int x, int y, int color) {
     bool isCaptured = false;
     if (x > 0 && array[y][x - 1] == getOppositeColor(color)) {
         isCaptured = isCaptured || checkCaptureHelper(array, x - 1, y, color);
-    }
+    
     if (x < FIELD_SIZE - 1 && array[y][x + 1] == getOppositeColor(color)) {
         isCaptured = isCaptured || checkCaptureHelper(array, x + 1, y, color);
-    }
+    
     if (y > 0 && array[y - 1][x] == getOppositeColor(color)) {
         isCaptured = isCaptured || checkCaptureHelper(array, x, y - 1, color);
-    }
+    
     if (y < FIELD_SIZE - 1 && array[y + 1][x] == getOppositeColor(color)) {
         isCaptured = isCaptured || checkCaptureHelper(array, x, y + 1, color);
+    }
+    }
+    }
     }
     if (isCaptured) {
         removeStones(array, x, y, color);
@@ -189,6 +192,7 @@ int main() {
     int x = 0, y = 0, moveCount=0;
     bool flag = true;
     while (!gameOver(field, moveCount)) {
+        system ("cls");
         while (flag) {
             cout << "White turn ";
             cin >> x >> y;
